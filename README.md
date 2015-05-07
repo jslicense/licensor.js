@@ -11,3 +11,8 @@ Generate a LICENSE file from `package.json`.
 npm --global install licensor
 licensor < package.json > LICENSE
 ```
+
+```js
+var licensor = require('licensor');
+licensor(require('./package.json'));
+```
