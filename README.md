@@ -7,9 +7,7 @@ licensor.js
 
 Generate a LICENSE file from `package.json`.
 
-<!-- js
-  var licensor = require('./');
--->
-
-```js
+```bash
+npm --global install licensor
+licensor < package.json > LICENSE
 ```
