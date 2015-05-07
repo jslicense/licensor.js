@@ -1,0 +1,38 @@
+{
+  "name": "licensor",
+  "description": "generate a LICENSE file from package.json",
+  "version": "0.0.0-prerelease",
+  "author": "Kyle E. Mitchell <kyle@kemitchell.com> (http://kemitchell.com)",
+  "bin": {
+    "licensor": "source/licensor"
+  },
+  "bugs": "https://github.com/kemitchell/licensor/issues",
+  "dependencies": {
+    "concat-stream": "^1.4.8",
+    "normalize-package-data": "^2.1.0",
+    "spdx": "^0.4.0"
+  },
+  "devDependencies": {
+    "fixpack": "^2.2.0",
+    "jscs": "^1.13.1",
+    "jshint": "^2.7.0",
+    "jsmd": "^0.3.0"
+  },
+  "homepage": "https://github.com/kemitchell/licensor.js",
+  "keywords": [
+    "SPDX",
+    "law",
+    "legal",
+    "license",
+    "metadata",
+    "package"
+  ],
+  "license": "Apache-2.0",
+  "main": "source/licensor.js",
+  "repository": "kemitchell/licensor.js",
+  "scripts": {
+    "lint": "fixpack && jshint source/licenserc.js && jscs source/licenserc.js",
+    "precommit": "npm run lint && npm run test",
+    "test": "jsmd README.md"
+  }
+}

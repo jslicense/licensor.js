@@ -1,0 +1,11 @@
+#!/usr/bin/env node
+var licensor = require('..');
+var concat = require('concat-stream');
+
+process.stdin
+  .pipe(concat(function(buffer) {
+    var object = JSON.parse(buffer);
+    licensor(object, function(error, text) {
+      console.log(text);
+    });
+  }));
