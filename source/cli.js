@@ -30,13 +30,16 @@ module.exports = function(stdin, stdout, stderr, env, argv, callback) {
     stdout.write(usage);
     callback(0);
   } else {
-    stdin
+    var input = options.FILE ?
+      fs.createReadStream(options.FILE) :
+      stdin;
+    input
       .pipe(concat(function(buffer) {
         licensor(
           JSON.parse(buffer),
           options['--wrap'],
           function(error, text) {
-            stdout.write(text);
+            stdout.write(text + '\n');
             callback(0);
           }
         );
