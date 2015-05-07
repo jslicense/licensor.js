@@ -8,6 +8,7 @@ var transform = require('./transform');
 var required = [
   'Apache-2.0',
   'BSD-2-Clause',
+  'GPL-3.0',
   'ISC',
   'MIT'
 ]
