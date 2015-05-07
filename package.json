@@ -6,6 +6,7 @@
   "bin": "./source/licensor",
   "bugs": "https://github.com/kemitchell/licensor/issues",
   "dependencies": {
+    "jslicense-apache-2.0": "jslicense/jslicense-apache-2.0",
     "jslicense-bsd-2-clause": "jslicense/jslicense-bsd-2-clause",
     "jslicense-isc": "jslicense/jslicense-isc",
     "jslicense-mit": "jslicense/jslicense-mit",

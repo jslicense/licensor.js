@@ -6,6 +6,7 @@ var fieldFromPackage = require('./fieldFromPackage');
 var transform = require('./transform');
 
 var required = [
+  'Apache-2.0',
   'BSD-2-Clause',
   'ISC',
   'MIT'
