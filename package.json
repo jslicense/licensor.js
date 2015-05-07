@@ -7,6 +7,7 @@
   "bugs": "https://github.com/jslicense/licensor.js/issues",
   "dependencies": {
     "concat-stream": "^1.4.8",
+    "docopt": "^0.6.2",
     "jslicense-apache-2.0": "jslicense/jslicense-apache-2.0",
     "jslicense-bsd-2-clause": "jslicense/jslicense-bsd-2-clause",
     "jslicense-gpl-3.0": "jslicense/jslicense-gpl-3.0",

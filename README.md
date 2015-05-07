@@ -18,5 +18,7 @@ With Node.js:
 
 ```js
 var licensor = require('licensor');
-licensor(require('./package.json'));
+licensor(require('./package.json'), 72, function(error, text) {
+  console.log(text);
+});
 ```

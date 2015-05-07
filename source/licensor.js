@@ -20,7 +20,7 @@ var required = [
 
 var noError = null;
 
-module.exports = function(packageJSON, callback) {
+module.exports = function(packageJSON, width, callback) {
   normalize(packageJSON);
   var license = packageJSON.license;
   if (!license || typeof license !== 'string' || !spdx.valid(license)) {
@@ -30,7 +30,7 @@ module.exports = function(packageJSON, callback) {
       callback(
         noError,
         format(
-          'SPDX:' + license + '\n' +
+          'SPDX:' + license + '\n\n' +
           required[license]
             .map(function(lineArray) {
               return lineArray.reduce(function(line, lineItem) {
@@ -48,9 +48,8 @@ module.exports = function(packageJSON, callback) {
                 }
               }, '');
             })
-            .join('\n'),
-          false,
-          '\n\n'
+            .join('\n\n'),
+          width || false
         )
       );
     } else {

@@ -4,21 +4,21 @@ require('tap').test('ISC License test', function(test) {
     author: 'John Doe <john@doe.com>',
     license: 'ISC'
   };
-  require('..')(packageJSON, function(error, text) {
+  require('..')(packageJSON, false, function(error, text) {
     test.equal(
       text,
       [
         'SPDX:ISC',
-        '',
+
         'ISC License:',
-        '',
+
         'Copyright (c) ' + new Date().getFullYear() + ' by John Doe',
-        '',
+
         'Permission to use, copy, modify, and/or distribute this ' +
         'software for any purpose with or without fee is hereby ' +
         'granted, provided that the above copyright notice and this ' +
         'permission notice appear in all copies.',
-        '',
+
         'THE SOFTWARE IS PROVIDED "AS IS" AND ISC DISCLAIMS ALL ' +
         'WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL ' +
         'IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO ' +
@@ -28,7 +28,7 @@ require('tap').test('ISC License test', function(test) {
         'WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER ' +
         'TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE ' +
         'USE OR PERFORMANCE OF THIS SOFTWARE.'
-      ].join('\n')
+      ].join('\n\n')
     );
   });
 });
