@@ -9,14 +9,18 @@
   "bugs": "https://github.com/kemitchell/licensor/issues",
   "dependencies": {
     "concat-stream": "^1.4.8",
+    "jslicense-mit": "jslicense/jslicense-mit",
     "normalize-package-data": "^2.1.0",
-    "spdx": "^0.4.0"
+    "spdx": "^0.4.0",
+    "split": "^0.3.3",
+    "through2": "^0.6.5",
+    "word-wrap": "^1.0.3"
   },
   "devDependencies": {
     "fixpack": "^2.2.0",
     "jscs": "^1.13.1",
     "jshint": "^2.7.0",
-    "jsmd": "^0.3.0"
+    "tap": "^1.0.0"
   },
   "homepage": "https://github.com/kemitchell/licensor.js",
   "keywords": [
@@ -33,6 +37,6 @@
   "scripts": {
     "lint": "fixpack && jshint source/licenserc.js && jscs source/licenserc.js",
     "precommit": "npm run lint && npm run test",
-    "test": "jsmd README.md"
+    "test": "tap test"
   }
 }
