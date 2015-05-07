@@ -4,7 +4,7 @@
   "version": "0.0.0-prerelease",
   "author": "Kyle E. Mitchell <kyle@kemitchell.com> (http://kemitchell.com)",
   "bin": "./source/licensor",
-  "bugs": "https://github.com/kemitchell/licensor/issues",
+  "bugs": "https://github.com/jslicense/licensor/issues",
   "dependencies": {
     "jslicense-apache-2.0": "jslicense/jslicense-apache-2.0",
     "jslicense-bsd-2-clause": "jslicense/jslicense-bsd-2-clause",
@@ -20,7 +20,7 @@
     "jshint": "^2.7.0",
     "tap": "^1.0.0"
   },
-  "homepage": "https://github.com/kemitchell/licensor.js",
+  "homepage": "https://github.com/jslicense/licensor.js",
   "keywords": [
     "SPDX",
     "law",
@@ -31,7 +31,7 @@
   ],
   "license": "Apache-2.0",
   "main": "source/licensor.js",
-  "repository": "kemitchell/licensor.js",
+  "repository": "jslicense/licensor.js",
   "scripts": {
     "lint": "fixpack && jshint source/licenserc.js && jscs source/licenserc.js",
     "precommit": "npm run lint && npm run test",
