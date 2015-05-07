@@ -11,7 +11,7 @@ At the command line:
 
 ```bash
 npm --global install licensor
-licensor < package.json > LICENSE
+licensor --wrap 72 < package.json > LICENSE
 ```
 
 With Node.js:
