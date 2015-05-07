@@ -3,17 +3,14 @@
   "description": "generate a LICENSE file from package.json",
   "version": "0.0.0-prerelease",
   "author": "Kyle E. Mitchell <kyle@kemitchell.com> (http://kemitchell.com)",
-  "bin": {
-    "licensor": "source/licensor"
-  },
+  "bin": "./source/licensor",
   "bugs": "https://github.com/kemitchell/licensor/issues",
   "dependencies": {
-    "concat-stream": "^1.4.8",
+    "jslicense-bsd-2-clause": "jslicense/jslicense-bsd-2-clause",
+    "jslicense-isc": "jslicense/jslicense-isc",
     "jslicense-mit": "jslicense/jslicense-mit",
     "normalize-package-data": "^2.1.0",
     "spdx": "^0.4.0",
-    "split": "^0.3.3",
-    "through2": "^0.6.5",
     "word-wrap": "^1.0.3"
   },
   "devDependencies": {

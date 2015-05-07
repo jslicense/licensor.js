@@ -8,6 +8,8 @@ require('tap').test('MIT License test', function(test) {
     test.equal(
       text,
       [
+        'SPDX:MIT',
+        '',
         'MIT License',
         '',
         'Copyright (c) ' + new Date().getFullYear() + ' ' + 'John Doe',
@@ -32,8 +34,7 @@ require('tap').test('MIT License test', function(test) {
         'OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR ' +
         'OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR ' +
         'OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE ' +
-        'SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.',
-        ''
+        'SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.'
       ].join('\n')
     );
   });
