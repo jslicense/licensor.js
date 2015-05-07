@@ -23,7 +23,7 @@ module.exports = function(packageJSON, callback) {
   normalize(packageJSON);
   var license = packageJSON.license;
   if (!license || typeof license !== 'string' || !spdx.valid(license)) {
-    throw new Error('Invalid license identifier');
+    throw new Error('Invalid license expression');
   } else {
     if (required.hasOwnProperty(license)) {
       callback(
@@ -53,7 +53,10 @@ module.exports = function(packageJSON, callback) {
         )
       );
     } else {
-      callback('No such license');
+      callback(
+        'licensor does not know how to write the licnese ' +
+        '"' + license + '".'
+      );
     }
   }
 };
