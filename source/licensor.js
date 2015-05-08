@@ -8,9 +8,11 @@ var transform = require('./transform');
 var required = [
   'Apache-2.0',
   'BSD-2-Clause',
+  'BSD-3-Clause',
   'GPL-3.0',
   'ISC',
-  'MIT'
+  'MIT',
+  'WTFPL'
 ]
   .reduce(function(required, identifier) {
     var packageName = 'jslicense-' + identifier.toLowerCase();
