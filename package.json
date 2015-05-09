@@ -1,7 +1,7 @@
 {
   "name": "licensor",
   "description": "generate a LICENSE file from package.json",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Kyle E. Mitchell <kyle@kemitchell.com> (http://kemitchell.com)",
   "bin": "./bin/licensor",
   "bugs": "https://github.com/jslicense/licensor.js/issues",
