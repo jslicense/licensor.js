@@ -20,6 +20,7 @@
     "word-wrap": "^1.0.3"
   },
   "devDependencies": {
+    "covert": "^1.1.0",
     "fixpack": "^2.2.0",
     "jscs": "^1.13.1",
     "jshint": "^2.7.0",
@@ -38,8 +39,9 @@
   "main": "source/licensor.js",
   "repository": "jslicense/licensor.js",
   "scripts": {
+    "coverage": "covert test/*.test.js",
     "lint": "fixpack && jshint source && jscs source",
-    "precommit": "npm run lint && npm run test",
-    "test": "tap test"
+    "precommit": "npm run lint && npm run coverage",
+    "test": "tap test/*.test.js"
   }
 }

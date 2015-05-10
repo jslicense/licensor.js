@@ -26,7 +26,7 @@ module.exports = function(packageJSON, width, callback) {
   normalize(packageJSON);
   var license = packageJSON.license;
   if (!license || typeof license !== 'string' || !spdx.valid(license)) {
-    throw new Error('Invalid license expression');
+    callback(new Error('Invalid license expression'));
   } else {
     if (required.hasOwnProperty(license)) {
       callback(
@@ -56,8 +56,10 @@ module.exports = function(packageJSON, width, callback) {
       );
     } else {
       callback(
-        'licensor does not know how to write the licnese ' +
-        '"' + license + '".'
+        new Error(
+          'licensor does not know how to write the license ' +
+          '"' + license + '".'
+        )
       );
     }
   }
