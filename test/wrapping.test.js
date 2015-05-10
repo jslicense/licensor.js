@@ -9,7 +9,10 @@ require('tap').test('ISC License test', function(test) {
       text
         .split('\n')
         .every(function(line) {
-          return line.length <= 72;
+          return (
+            line.length <= 72 &&
+            line === line.trim()
+          );
         })
     );
   });
