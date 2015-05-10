@@ -39,9 +39,9 @@
   "main": "source/licensor.js",
   "repository": "jslicense/licensor.js",
   "scripts": {
-    "coverage": "covert test/*.test.js",
+    "coverage": "covert -q test/*.test.js",
     "lint": "fixpack && jshint source && jscs source",
-    "precommit": "npm run lint && npm run coverage",
+    "precommit": "npm run lint && npm run test && npm run coverage",
     "test": "tap test/*.test.js"
   }
 }
