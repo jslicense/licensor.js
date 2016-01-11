@@ -23,6 +23,11 @@
     "covert": "^1.1.0",
     "tap": "^1.0.0"
   },
+  "files": [
+    "NOTICE",
+    "source",
+    "licensor"
+  ],
   "homepage": "https://github.com/jslicense/licensor.js",
   "keywords": [
     "SPDX",
@@ -38,10 +43,5 @@
   "scripts": {
     "coverage": "covert -q test/*.test.js",
     "test": "tap test/*.test.js"
-  },
-  "files": [
-    "NOTICE",
-    "source",
-    "licensor"
-  ]
+  }
 }
