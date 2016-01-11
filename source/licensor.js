@@ -1,7 +1,6 @@
 var normalize = require('normalize-package-data');
 var spdx = require('spdx');
 
-var format = require('./format');
 var fieldFromPackage = require('./fieldFromPackage');
 var transform = require('./transform');
 
@@ -23,7 +22,7 @@ var required = [
 
 var noError = null;
 
-module.exports = function(packageJSON, width, callback) {
+module.exports = function(packageJSON, callback) {
   normalize(packageJSON);
   var license = packageJSON.license;
   if (!license || typeof license !== 'string' || !spdx.valid(license)) {
@@ -32,7 +31,7 @@ module.exports = function(packageJSON, width, callback) {
     if (required.hasOwnProperty(license)) {
       callback(
         noError,
-        format(
+        (
           'SPDX:' + license + '\n\n' +
           required[license]
             .map(function(lineArray) {
@@ -51,8 +50,7 @@ module.exports = function(packageJSON, width, callback) {
                 }
               }, '');
             })
-            .join('\n\n'),
-          width || false
+            .join('\n\n')
         )
       );
     } else {

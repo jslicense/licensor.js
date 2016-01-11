@@ -4,7 +4,7 @@ require('tap').test('Zeor-Clause BSD License test', function(test) {
     author: 'John Doe <john@doe.com>',
     license: '0BSD'
   };
-  require('..')(packageJSON, false, function(error, text) {
+  require('..')(packageJSON, function(error, text) {
     test.equal(
       text,
       [

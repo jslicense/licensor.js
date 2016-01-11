@@ -17,8 +17,7 @@
     "jslicense-mit": "^0.1.0",
     "jslicense-wtfpl": "^0.1.0",
     "normalize-package-data": "^2.1.0",
-    "spdx": "^0.4.0",
-    "word-wrap": "^1.0.3"
+    "spdx": "^0.4.0"
   },
   "devDependencies": {
     "covert": "^1.1.0",

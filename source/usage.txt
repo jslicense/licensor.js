@@ -1,9 +1,6 @@
 Generate a LICENSE file from package.json
 
 Usage:
-  licensor [FILE] [options]
+  licensor [FILE]
   licensor -h | --help
   licensor -v | --version
-
-Options:
-  -w WIDTH, --wrap WIDTH  Wrap text to the specified width

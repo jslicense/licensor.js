@@ -4,7 +4,7 @@ require('tap').test('New BSD License test', function(test) {
     author: 'John Doe <john@doe.com>',
     license: 'BSD-2-Clause'
   };
-  require('..')(packageJSON, false, function(error, text) {
+  require('..')(packageJSON, function(error, text) {
     test.equal(
       text,
       [

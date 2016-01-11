@@ -4,7 +4,7 @@ require('tap').test('invalid license', function(test) {
     author: 'John Doe <john@doe.com>',
     license: 'Glide'
   };
-  require('..')(packageJSON, false, function(error) {
+  require('..')(packageJSON, function(error) {
     test.equal(
       error.message,
       'licensor does not know how to write the license "Glide".'

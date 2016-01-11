@@ -37,7 +37,6 @@ module.exports = function(stdin, stdout, stderr, env, argv, callback) {
       .pipe(concat(function(buffer) {
         licensor(
           JSON.parse(buffer),
-          options['--wrap'],
           function(error, text) {
             stdout.write(text + '\n');
             callback(0);

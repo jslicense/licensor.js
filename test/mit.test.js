@@ -4,7 +4,7 @@ require('tap').test('MIT License test', function(test) {
     author: 'John Doe <john@doe.com>',
     license: 'MIT'
   };
-  require('..')(packageJSON, false, function(error, text) {
+  require('..')(packageJSON, function(error, text) {
     test.equal(
       text,
       [
