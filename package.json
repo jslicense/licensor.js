@@ -8,6 +8,7 @@
   "dependencies": {
     "concat-stream": "^1.4.8",
     "docopt": "^0.6.2",
+    "jslicense-0bsd": "^0.1.0",
     "jslicense-apache-2.0": "^0.1.0",
     "jslicense-bsd-2-clause": "^0.1.0",
     "jslicense-bsd-3-clause": "^0.1.0",
