@@ -7,6 +7,13 @@ npm --global install licensor
 licensor < package.json > LICENSE
 ```
 
+If you would like to wrap long lines, try either of:
+
+```bash
+licensor < package.json | fmt -w72 > LICENSE
+licensor < package.json | par -w72 > LICENSE
+```
+
 With Node.js:
 
 ```js
