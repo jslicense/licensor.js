@@ -22,3 +22,5 @@ licensor(require('./package.json'), function(error, text) {
   console.log(text);
 });
 ```
+
+Licensor assumes that the "author" in `package.json` is also the copyright owner and that the package was created in the current calendar year.
