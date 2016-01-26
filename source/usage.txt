@@ -1,6 +1,0 @@
-Generate a LICENSE file from package.json
-
-Usage:
-  licensor [FILE]
-  licensor -h | --help
-  licensor -v | --version

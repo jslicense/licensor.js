@@ -1,11 +1,80 @@
 #!/usr/bin/env node
-require('./source/cli')(
-  process.stdin,
-  process.stdout,
-  process.stderr,
-  process.env,
-  process.argv.slice(2),
-  function(status) {
-    process.exit(status);
-  }
-);
+var fs = require('fs')
+var path = require('path')
+var nopt = require('nopt')
+
+var options = nopt(
+  { version: Boolean },
+  { v: [ '--version' ] },
+  process.argv, 2)
+
+if (options.version) {
+  process.stdout.write(require('./package.json').version + '\n')
+  process.exit(0) }
+
+var cwd = process.cwd()
+
+var packageJSON = path.join(cwd, 'package.json')
+try {
+  fs.accessSync(packageJSON, fs.R_OK) }
+catch (error) {
+  process.stderr.write('Cannot read package.json')
+  process.exit(1) }
+
+var packageData = fs.readFileSync(packageJSON)
+
+var json
+try {
+  json = JSON.parse(packageData) }
+catch (error) {
+  process.stderr.write('Invalid package.json')
+  process.exit(1) }
+
+require('normalize-package-data')(json)
+
+var supported = [
+  '0BSD',
+  'Apache-2.0',
+  'BSD-2-Clause',
+  'BSD-3-Clause',
+  'GPL-3.0',
+  'ISC',
+  'MIT',
+  'WTFPL' ]
+
+var license = json.license
+
+if (!license || typeof license !== 'string') {
+  process.stderr.write('No license property')
+  process.exit(1) }
+
+if (supported.indexOf(license) < 0) {
+  process.stderr.write('Unsupported license')
+  process.exit(1) }
+
+fs.writeFileSync(
+  path.join(cwd, 'LICENSE'),
+  ( 'SPDX:' + license + '\n\n' +
+    require('jslicense-' + license.toLowerCase())
+      .map(function(lineArray) {
+        return lineArray.reduce(
+          function(line, lineItem) {
+            if (typeof lineItem === 'string') {
+              return line + lineItem
+            } else {
+              return (
+                line +
+                fieldFromPackage(
+                  lineItem.field,
+                  json,
+                  lineItem.default) ) } },
+          '') })
+      .join('\n\n') ) )
+
+function fieldFromPackage(field, package/*, defaultValue */) {
+  if (field === 'owners') {
+    return package.author.name }
+  else if (field === 'year') {
+    return new Date()
+      .getFullYear()
+      .toString() } }

@@ -6,8 +6,6 @@
   "bin": "./licensor",
   "bugs": "https://github.com/jslicense/licensor.js/issues",
   "dependencies": {
-    "concat-stream": "^1.4.8",
-    "docopt": "^0.6.2",
     "jslicense-0bsd": "^0.1.0",
     "jslicense-apache-2.0": "^0.1.0",
     "jslicense-bsd-2-clause": "^0.1.0",
@@ -16,19 +14,15 @@
     "jslicense-isc": "^0.1.0",
     "jslicense-mit": "^0.1.0",
     "jslicense-wtfpl": "^0.1.0",
+    "nopt": "^3.0.6",
     "normalize-package-data": "^2.1.0",
     "spdx": "^0.4.0"
   },
   "devDependencies": {
-    "covert": "^1.1.0",
-    "tap": "^1.0.0"
+    "glob": "^6.0.4",
+    "tap": "^5.1.2",
+    "tape": "^4.4.0"
   },
-  "files": [
-    "NOTICE",
-    "source",
-    "licensor"
-  ],
-  "homepage": "https://github.com/jslicense/licensor.js",
   "keywords": [
     "SPDX",
     "law",
@@ -38,10 +32,8 @@
     "package"
   ],
   "license": "Apache-2.0",
-  "main": "source/licensor.js",
   "repository": "jslicense/licensor.js",
   "scripts": {
-    "coverage": "covert -q test/*.test.js",
-    "test": "tap test/*.test.js"
+    "test": "tap tests/**/test.js"
   }
 }
