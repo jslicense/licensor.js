@@ -4,7 +4,6 @@
   "version": "1.1.0",
   "author": "Kyle E. Mitchell <kyle@kemitchell.com> (http://kemitchell.com)",
   "bin": "./licensor",
-  "bugs": "https://github.com/jslicense/licensor.js/issues",
   "dependencies": {
     "apache-2.0": "^1.0.7",
     "gpl-3.0": "^1.0.1",
