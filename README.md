@@ -1,26 +1,16 @@
-Generate a LICENSE file from `package.json`.
+Generate LICENSE and related files from `package.json`.
 
 At the command line:
 
 ```bash
 npm --global install licensor
-licensor < package.json > LICENSE
+cd your-package
+licensor
 ```
 
-If you would like to wrap long lines, try either of:
+Licensor assumes:
 
-```bash
-licensor < package.json | fmt -w72 > LICENSE
-licensor < package.json | par -w72 > LICENSE
-```
+1. The person described by `package.json`'s `author` field is the
+   copyright owner and licensor.
 
-With Node.js:
-
-```js
-var licensor = require('licensor');
-licensor(require('./package.json'), function(error, text) {
-  console.log(text);
-});
-```
-
-Licensor assumes that the "author" in `package.json` is also the copyright owner and that the package was created in the current calendar year.
+2. The package was created in the current calendar year.
