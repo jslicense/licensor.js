@@ -16,7 +16,6 @@
     "jslicense-wtfpl": "^0.1.0",
     "nopt": "^3.0.6",
     "normalize-package-data": "^2.1.0",
-    "spdx": "^0.4.0",
     "word-wrap": "^1.1.0"
   },
   "files": [
