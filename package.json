@@ -18,16 +18,16 @@
     "normalize-package-data": "^2.1.0",
     "word-wrap": "^1.1.0"
   },
+  "devDependencies": {
+    "glob": "^6.0.4",
+    "tap": "^5.1.2"
+  },
   "files": [
     "LICENSE",
     "NOTICE",
     "README.md",
     "licensor"
   ],
-  "devDependencies": {
-    "glob": "^6.0.4",
-    "tap": "^5.1.2"
-  },
   "keywords": [
     "SPDX",
     "law",
