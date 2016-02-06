@@ -27,8 +27,7 @@
   ],
   "devDependencies": {
     "glob": "^6.0.4",
-    "tap": "^5.1.2",
-    "tape": "^4.4.0"
+    "tap": "^5.1.2"
   },
   "keywords": [
     "SPDX",
