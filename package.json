@@ -6,11 +6,11 @@
   "bin": "./licensor",
   "bugs": "https://github.com/jslicense/licensor.js/issues",
   "dependencies": {
+    "apache-2.0": "^1.0.7",
+    "gpl-3.0": "^1.0.1",
     "jslicense-0bsd": "^0.1.0",
-    "jslicense-apache-2.0": "^0.1.0",
     "jslicense-bsd-2-clause": "^0.1.0",
     "jslicense-bsd-3-clause": "^0.1.0",
-    "jslicense-gpl-3.0": "^0.1.0",
     "jslicense-isc": "^0.1.0",
     "jslicense-mit": "^0.1.0",
     "jslicense-wtfpl": "^0.1.0",

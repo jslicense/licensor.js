@@ -32,15 +32,17 @@ catch (error) {
 
 require('normalize-package-data')(json)
 
-var supported = [
+var patternLicenses = [
   '0BSD',
-  'Apache-2.0',
   'BSD-2-Clause',
   'BSD-3-Clause',
-  'GPL-3.0',
   'ISC',
   'MIT',
   'WTFPL' ]
+
+var fixedLicenses = [
+  'Apache-2.0',
+  'GPL-3.0' ]
 
 var license = json.license
 
@@ -48,14 +50,26 @@ if (!license || typeof license !== 'string') {
   process.stderr.write('No license property')
   process.exit(1) }
 
-if (supported.indexOf(license) < 0) {
+var packagePrefix = false
+
+if (patternLicenses.indexOf(license) > -1) {
+  packagePrefix = 'jslicense-' }
+else if (fixedLicenses.indexOf(license) > -1) {
+  packagePrefix = '' }
+
+if (packagePrefix === false) {
   process.stderr.write('Unsupported license')
   process.exit(1) }
 
+var licensePath  = path.join(cwd, 'LICENSE')
+
 fs.writeFileSync(
-  path.join(cwd, 'LICENSE'),
-  ( 'SPDX:' + license + '\n\n' +
-    require('jslicense-' + license.toLowerCase())
+  licensePath,
+  licenseText(license.toLowerCase()))
+
+function licenseText(id) {
+  if (packagePrefix === 'jslicense-') {
+    return require(packagePrefix + license.toLowerCase())
       .map(function(lineArray) {
         return lineArray.reduce(
           function(line, lineItem) {
@@ -69,7 +83,9 @@ fs.writeFileSync(
                   json,
                   lineItem.default) ) } },
           '') })
-      .join('\n\n') ) )
+      .join('\n\n') }
+  else {
+    return require(id) } }
 
 function fieldFromPackage(field, package/*, defaultValue */) {
   if (field === 'owners') {

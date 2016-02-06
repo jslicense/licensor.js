@@ -6,9 +6,7 @@ tap.equal(require('../run')([ ], __dirname).status, 0)
 
 tap.equal(
   fs.readFileSync(path.join(__dirname, 'LICENSE')).toString(),
-  [ 'SPDX:MIT',
-
-    'MIT License',
+  [ 'MIT License',
 
     'Copyright (c) ' + new Date().getFullYear() + ' ' + 'John Doe',
 
@@ -32,5 +30,5 @@ tap.equal(
     'OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR ' +
     'OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR ' +
     'OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE ' +
-    'SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.'
-  ].join('\n\n'))
+    'SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.' ]
+    .join('\n\n'))
