@@ -136,7 +136,10 @@ function fieldFromPackage(field, package/*, defaultValue */) {
   else if (field === 'name') {
     return package.name }
   else if (field === 'owners') {
-    return package.author.name }
+    return (
+      package.author.hasOwnProperty('for') ?
+        package.author.for :
+        package.author.name ) }
   else if (field === 'year') {
     return new Date()
       .getFullYear()
