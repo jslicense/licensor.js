@@ -1,6 +1,6 @@
 {
   "name": "licensor",
-  "description": "generate a LICENSE file from package.json",
+  "description": "generate LICENSE and related files from package.json",
   "version": "0.2.2",
   "author": "Kyle E. Mitchell <kyle@kemitchell.com> (http://kemitchell.com)",
   "bin": "./licensor",
