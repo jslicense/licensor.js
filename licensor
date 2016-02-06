@@ -6,10 +6,27 @@ var wrap = require('word-wrap')
 
 var options = nopt(
   { version: Boolean,
-    width: Number },
+    width: Number,
+    help: Boolean },
   { v: [ '--version' ],
-    w: [ '--width' ] },
+    w: [ '--width' ],
+    h: [ '--help' ] },
   process.argv, 2)
+
+if (options.help) {
+  process.stdout.write(
+    ( [ 'Usage:',
+        '  licensor [--wrap=COLUMNS]',
+        '  licensor -h | --help',
+        '  licensor -v | --version',
+        '',
+        'Options:',
+        '  -h, --help                     Show this screen.',
+        '  -v, --version                  Show version.',
+        '  -w COLUMNS, --width=COLUMNS    Wrap license text.' ]
+      .join('\n') +
+      '\n' ))
+  process.exit(0) }
 
 if (options.version) {
   process.stdout.write(require('./package.json').version + '\n')
