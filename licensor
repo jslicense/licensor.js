@@ -2,10 +2,13 @@
 var fs = require('fs')
 var path = require('path')
 var nopt = require('nopt')
+var wrap = require('word-wrap')
 
 var options = nopt(
-  { version: Boolean },
-  { v: [ '--version' ] },
+  { version: Boolean,
+    width: Number },
+  { v: [ '--version' ],
+    w: [ '--width' ] },
   process.argv, 2)
 
 if (options.version) {
@@ -63,6 +66,18 @@ if (packagePrefix === false) {
 
 var licensePath  = path.join(cwd, 'LICENSE')
 
+var wrapText = (
+  options.width ?
+    function(x) {
+      return wrap(
+        x.replace(/\n\n/g, '\n'),
+        { width: options.width,
+          indent: '',
+          trim: true,
+          newline: '\n' }) } :
+    function(x) {
+      return x } )
+
 fs.writeFileSync(
   licensePath,
   licenseText(license.toLowerCase()))
@@ -78,21 +93,22 @@ if (license === 'Apache-2.0') {
 
 function licenseText(id) {
   if (packagePrefix === 'jslicense-') {
-    return require(packagePrefix + license.toLowerCase())
-      .map(function(lineArray) {
-        return lineArray.reduce(
-          function(line, lineItem) {
-            if (typeof lineItem === 'string') {
-              return line + lineItem }
-            else {
-              return (
-                line +
-                fieldFromPackage(
-                  lineItem.field,
-                  json,
-                  lineItem.default) ) } },
-          '') })
-      .join('\n\n') }
+    return wrapText(
+      require(packagePrefix + license.toLowerCase())
+        .map(function(lineArray) {
+          return lineArray.reduce(
+            function(line, lineItem) {
+              if (typeof lineItem === 'string') {
+                return line + lineItem }
+              else {
+                return (
+                  line +
+                  fieldFromPackage(
+                    lineItem.field,
+                    json,
+                    lineItem.default) ) } },
+            '') })
+        .join('\n\n')) }
   else {
     return require(id) } }
 
