@@ -15,7 +15,9 @@ var options = nopt(
 
 if (options.help) {
   process.stdout.write(
-    ( [ 'Usage:',
+    ( [ 'Generate LICENSE and related files from package.json.',
+        '',
+        'Usage:',
         '  licensor [--wrap=COLUMNS]',
         '  licensor -h | --help',
         '  licensor -v | --version',
