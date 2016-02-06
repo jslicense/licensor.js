@@ -11,4 +11,5 @@ tap.equal(
 tap.equal(
   fs.readFileSync(path.join(__dirname, 'NOTICE')).toString(),
   ( 'the-package\n' +
+    'https://github.com/john/the-package#readme\n' +
     'Copyright (c) ' + new Date().getFullYear() + ' John Doe' ))

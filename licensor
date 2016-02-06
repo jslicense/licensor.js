@@ -68,9 +68,11 @@ fs.writeFileSync(
   licenseText(license.toLowerCase()))
 
 if (license === 'Apache-2.0') {
+  var url = fieldFromPackage('url', json)
   fs.writeFileSync(
     path.join(cwd, 'NOTICE'),
     ( fieldFromPackage('name', json) + '\n' +
+      ( url ? ( url + '\n' ) : '' ) +
       'Copyright (c) ' + fieldFromPackage('year', json) +
       ' ' + fieldFromPackage('owners', json) ) ) }
 
@@ -95,7 +97,9 @@ function licenseText(id) {
     return require(id) } }
 
 function fieldFromPackage(field, package/*, defaultValue */) {
-  if (field === 'name') {
+  if (field === 'url') {
+    return package.homepage }
+  else if (field === 'name') {
     return package.name }
   else if (field === 'owners') {
     return package.author.name }
