@@ -63,8 +63,7 @@ var patternLicenses = [
   'WTFPL' ]
 
 var fixedLicenses = [
-  'Apache-2.0',
-  'GPL-3.0' ]
+  'Apache-2.0' ]
 
 var license = json.license
 
