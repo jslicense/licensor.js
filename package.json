@@ -19,6 +19,12 @@
     "spdx": "^0.4.0",
     "word-wrap": "^1.1.0"
   },
+  "files": [
+    "LICENSE",
+    "NOTICE",
+    "README.md",
+    "licensor"
+  ],
   "devDependencies": {
     "glob": "^6.0.4",
     "tap": "^5.1.2",
