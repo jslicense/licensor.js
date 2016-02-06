@@ -107,7 +107,7 @@ if (license === 'Apache-2.0') {
     ( fieldFromPackage('name', json) + '\n' +
       ( url ? ( url + '\n' ) : '' ) +
       'Copyright (c) ' + fieldFromPackage('year', json) +
-      ' ' + fieldFromPackage('owners', json) ) ) }
+      ' ' + fieldFromPackage('owners', json) + '\n' ) ) }
 
 function licenseText(id) {
   if (packagePrefix === 'jslicense-') {
