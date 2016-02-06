@@ -1,7 +1,7 @@
 {
   "name": "licensor",
   "description": "generate LICENSE and related files from package.json",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "author": "Kyle E. Mitchell <kyle@kemitchell.com> (https://kemitchell.com)",
   "bin": "./licensor",
   "dependencies": {
