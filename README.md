@@ -5,7 +5,7 @@ At the command line:
 ```bash
 npm --global install licensor
 cd your-package
-licensor
+licensor --width 72
 ```
 
 Licensor assumes:
