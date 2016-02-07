@@ -111,22 +111,24 @@ if (license === 'Apache-2.0') {
 
 function licenseText(id) {
   if (packagePrefix === 'jslicense-') {
-    return wrapText(
-      require(packagePrefix + license.toLowerCase())
-        .map(function(lineArray) {
-          return lineArray.reduce(
-            function(line, lineItem) {
-              if (typeof lineItem === 'string') {
-                return line + lineItem }
-              else {
-                return (
-                  line +
-                  fieldFromPackage(
-                    lineItem.field,
-                    json,
-                    lineItem.default) ) } },
-            '') })
-        .join('\n\n')) }
+    return (
+      wrapText(
+        require(packagePrefix + license.toLowerCase())
+          .map(function(lineArray) {
+            return lineArray.reduce(
+              function(line, lineItem) {
+                if (typeof lineItem === 'string') {
+                  return line + lineItem }
+                else {
+                  return (
+                    line +
+                    fieldFromPackage(
+                      lineItem.field,
+                      json,
+                      lineItem.default) ) } },
+              '') })
+          .join('\n\n')) +
+      '\n' ) }
   else {
     return require(id) } }
 
