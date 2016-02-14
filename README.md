@@ -14,3 +14,6 @@ Licensor assumes:
    copyright owner and licensor.
 
 2. The package was created in the current calendar year.
+
+3. All `*.js` source files, except those in `node_modules`, are the
+   author's work.
