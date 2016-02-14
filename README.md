@@ -1,4 +1,4 @@
-Generate LICENSE and related files from `package.json`.
+Generate LICENSE, related files, and headers from `package.json`.
 
 At the command line:
 
