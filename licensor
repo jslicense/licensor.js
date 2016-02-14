@@ -145,7 +145,7 @@ if (license === 'Apache-2.0') {
     return (
       ( fileContent.indexOf('Copyright') > -1 ) &&
       ( fileContent.indexOf(licenseURL) > -1 ) ) }
-  require('glob').sync('**/*.js', { ignore: 'node_modules/*' })
+  require('glob').sync('**/*.js', { ignore: 'node_modules/**/*' })
     .forEach(function(jsFile) {
       var content = fs.readFileSync(jsFile).toString()
       if (!probablyHasHeader(content)) {
