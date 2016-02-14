@@ -38,7 +38,6 @@
   "license": "Apache-2.0",
   "repository": "jslicense/licensor.js",
   "scripts": {
-    "test": "tap tests/**/test.js",
-    "posttest": "git checkout tests"
+    "test": "tap tests/**/test.js"
   }
 }

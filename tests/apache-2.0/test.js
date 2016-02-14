@@ -50,6 +50,8 @@ tap.equal(
       .join('\n') + '\n\n' +
       indexBefore ))
 
+fs.writeFileSync(path.join(__dirname, 'index.js'), indexBefore)
+
 tap.equal(
   readFileSync('has-header.js'),
   alreadyHasBefore)
