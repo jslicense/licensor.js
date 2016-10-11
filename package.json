@@ -13,6 +13,7 @@
     "jslicense-bsd-3-clause": "^0.1.0",
     "jslicense-isc": "^0.1.0",
     "jslicense-mit": "^0.1.0",
+    "jslicense-upl-1.0": "^1.0.2",
     "jslicense-wtfpl": "^0.1.0",
     "nopt": "^3.0.6",
     "normalize-package-data": "^2.1.0",

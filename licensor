@@ -74,6 +74,7 @@ var patternLicenses = [
   'BSD-3-Clause',
   'ISC',
   'MIT',
+  'UPL-1.0',
   'WTFPL' ]
 
 var fixedLicenses = [
