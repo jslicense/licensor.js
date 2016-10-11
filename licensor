@@ -19,52 +19,61 @@ var nopt = require('nopt')
 var wrap = require('word-wrap')
 
 var options = nopt(
-  { version: Boolean,
+  {
+    version: Boolean,
     width: Number,
-    help: Boolean },
-  { v: [ '--version' ],
-    w: [ '--width' ],
-    h: [ '--help' ] },
-  process.argv, 2)
+    help: Boolean
+  },
+  {
+    v: ['--version'],
+    w: ['--width'],
+    h: ['--help']
+  },
+  process.argv,
+  2
+)
 
 if (options.help) {
-  process.stdout.write(
-    ( [ 'Generate LICENSE and related files from package.json.',
-        '',
-        'Usage:',
-        '  licensor [--wrap=COLUMNS]',
-        '  licensor -h | --help',
-        '  licensor -v | --version',
-        '',
-        'Options:',
-        '  -h, --help                     Show this screen.',
-        '  -v, --version                  Show version.',
-        '  -w COLUMNS, --width=COLUMNS    Wrap license text.' ]
-      .join('\n') +
-      '\n' ))
-  process.exit(0) }
+  process.stdout.write([
+    'Generate LICENSE and related files from package.json.',
+    '',
+    'Usage:',
+    '  licensor [--wrap=COLUMNS]',
+    '  licensor -h | --help',
+    '  licensor -v | --version',
+    '',
+    'Options:',
+    '  -h, --help                     Show this screen.',
+    '  -v, --version                  Show version.',
+    '  -w COLUMNS, --width=COLUMNS    Wrap license text.'
+  ].join('\n') + '\n')
+  process.exit(0)
+}
 
 if (options.version) {
   process.stdout.write(require('./package.json').version + '\n')
-  process.exit(0) }
+  process.exit(0)
+}
 
 var cwd = process.cwd()
 
 var packageJSON = path.join(cwd, 'package.json')
 try {
-  fs.accessSync(packageJSON, fs.R_OK) }
-catch (error) {
+  fs.accessSync(packageJSON, fs.R_OK)
+} catch (error) {
   process.stderr.write('Cannot read package.json')
-  process.exit(1) }
+  process.exit(1)
+}
 
 var packageData = fs.readFileSync(packageJSON)
 
 var json
 try {
-  json = JSON.parse(packageData) }
-catch (error) {
+  json = JSON.parse(packageData)
+} catch (error) {
   process.stderr.write('Invalid package.json')
-  process.exit(1) }
+  process.exit(1)
+}
 
 require('normalize-package-data')(json)
 
@@ -75,45 +84,53 @@ var patternLicenses = [
   'ISC',
   'MIT',
   'UPL-1.0',
-  'WTFPL' ]
+  'WTFPL'
+]
 
 var fixedLicenses = [
-  'Apache-2.0' ]
+  'Apache-2.0'
+]
 
 var license = json.license
 
 if (!license || typeof license !== 'string') {
   process.stderr.write('No license property')
-  process.exit(1) }
+  process.exit(1)
+}
 
 var packagePrefix = false
 
 if (patternLicenses.indexOf(license) > -1) {
-  packagePrefix = 'jslicense-' }
-else if (fixedLicenses.indexOf(license) > -1) {
-  packagePrefix = '' }
+  packagePrefix = 'jslicense-'
+} else if (fixedLicenses.indexOf(license) > -1) {
+  packagePrefix = ''
+}
 
 if (packagePrefix === false) {
   process.stderr.write('Unsupported license')
-  process.exit(1) }
+  process.exit(1)
+}
 
-var licensePath  = path.join(cwd, 'LICENSE')
+var licensePath = path.join(cwd, 'LICENSE')
 
-var wrapText = (
-  options.width ?
-    function(x) {
-      return wrap(
-        x.replace(/\n\n/g, '\n'),
-        { width: options.width,
-          indent: '',
-          trim: true,
-          newline: '\n' }) } :
-    function(x) {
-      return x } )
+var wrapText = options.width
+  ? function (x) {
+    return wrap(
+      x.replace(/\n\n/g, '\n'),
+      {
+        width: options.width,
+        indent: '',
+        trim: true,
+        newline: '\n'
+      }
+    )
+  }
+  : function (x) { return x }
 
 fs.writeFileSync(
   licensePath,
-  licenseText(license.toLowerCase()))
+  licenseText(license.toLowerCase())
+)
 
 if (license === 'Apache-2.0') {
   var year = fieldFromPackage('year', json)
@@ -122,68 +139,86 @@ if (license === 'Apache-2.0') {
   var url = fieldFromPackage('url', json)
   fs.writeFileSync(
     path.join(cwd, 'NOTICE'),
-    ( fieldFromPackage('name', json) + '\n' +
-      ( url ? ( url + '\n' ) : '' ) +
-      'Copyright (c) ' + year + ' ' + owners + '\n' ) )
+    fieldFromPackage('name', json) + '\n' +
+    (url ? url + '\n' : '') +
+    'Copyright (c) ' + year + ' ' + owners + '\n'
+  )
 
   var licenseURL = 'http://www.apache.org/licenses/LICENSE-2.0'
-  var header =
-    [ ( '/* Copyright ' + year + ' ' + owners ),
-        ' *',
-        ' * Licensed under the Apache License, Version 2.0 (the "License");',
-        ' * you may not use this file except in compliance with the License.',
-        ' * You may obtain a copy of the License at',
-        ' *', (
-        ' *     ' + licenseURL ),
-        ' *',
-        ' * Unless required by applicable law or agreed to in writing, software',
-        ' * distributed under the License is distributed on an "AS IS" BASIS,',
-        ' * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.',
-        ' * See the License for the specific language governing permissions and',
-        ' * limitations under the License.',
-        ' */' ]
-      .join('\n')
-  var probablyHasHeader = function(fileContent) {
+  var header = [
+    '/* Copyright ' + year + ' ' + owners,
+    ' *',
+    ' * Licensed under the Apache License, Version 2.0 (the "License");',
+    ' * you may not use this file except in compliance with the License.',
+    ' * You may obtain a copy of the License at',
+    ' *', (
+    ' *     ' + licenseURL ),
+    ' *',
+    ' * Unless required by applicable law or agreed to in writing, software',
+    ' * distributed under the License is distributed on an "AS IS" BASIS,',
+    ' * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.',
+    ' * See the License for the specific language governing permissions and',
+    ' * limitations under the License.',
+    ' */'
+  ].join('\n')
+
+  var probablyHasHeader = function (fileContent) {
     return (
-      ( fileContent.indexOf('Copyright') > -1 ) &&
-      ( fileContent.indexOf(licenseURL) > -1 ) ) }
-  require('glob').sync('**/*.js', { ignore: 'node_modules/**/*' })
-    .forEach(function(jsFile) {
+      fileContent.indexOf('Copyright') > -1 &&
+      fileContent.indexOf(licenseURL) > -1
+    )
+  }
+
+  require('glob')
+    .sync('**/*.js', {ignore: 'node_modules/**/*'})
+    .forEach(function (jsFile) {
       var content = fs.readFileSync(jsFile).toString()
       if (!probablyHasHeader(content)) {
-        fs.writeFileSync(jsFile, ( header + '\n\n' + content )) } }) }
+        fs.writeFileSync(jsFile, header + '\n\n' + content)
+      }
+    })
+}
 
-function licenseText(id) {
+function licenseText (id) {
   if (packagePrefix === 'jslicense-') {
     return (
       wrapText(
         require(packagePrefix + license.toLowerCase())
-          .map(function(lineArray) {
-            return lineArray.reduce(
-              function(line, lineItem) {
-                if (typeof lineItem === 'string') {
-                  return line + lineItem }
-                else {
-                  return (
-                    line +
-                    fieldFromPackage(
-                      lineItem.field,
-                      json,
-                      lineItem.default) ) } },
-              '') })
-          .join('\n\n')) +
-      '\n' ) }
-  else {
-    return require(id) } }
+          .map(function (lineArray) {
+            return lineArray.reduce(function (line, lineItem) {
+              if (typeof lineItem === 'string') {
+                return line + lineItem
+              } else {
+                return (
+                  line +
+                  fieldFromPackage(
+                    lineItem.field,
+                    json,
+                    lineItem.default
+                  )
+                )
+              }
+            }, '')
+          })
+          .join('\n\n')
+      ) +
+      '\n'
+    )
+  } else {
+    return require(id)
+  }
+}
 
-function fieldFromPackage(field, package/*, defaultValue */) {
+function fieldFromPackage (field, pkg/*, defaultValue */) {
   if (field === 'url') {
-    return package.homepage }
-  else if (field === 'name') {
-    return package.name }
-  else if (field === 'owners') {
-    return package.author.name }
-  else if (field === 'year') {
+    return pkg.homepage
+  } else if (field === 'name') {
+    return pkg.name
+  } else if (field === 'owners') {
+    return pkg.author.name
+  } else if (field === 'year') {
     return new Date()
       .getFullYear()
-      .toString() } }
+      .toString()
+  }
+}

@@ -13,5 +13,6 @@
  * limitations under the License.
  */
 require('tap').equal(
-  require('../run')([ ], __dirname).stderr,
-  'Unsupported license')
+  require('../run')([], __dirname).stderr,
+  'Unsupported license'
+)

@@ -20,6 +20,7 @@
     "word-wrap": "^1.1.0"
   },
   "devDependencies": {
+    "standard": "^8.4.0",
     "tap": "^5.1.2"
   },
   "files": [
@@ -40,6 +41,7 @@
   "license": "Apache-2.0",
   "repository": "jslicense/licensor.js",
   "scripts": {
-    "test": "tap tests/**/test.js"
+    "test": "tap tests/**/test.js",
+    "lint": "standard"
   }
 }
