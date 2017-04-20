@@ -5,18 +5,20 @@
   "author": "Kyle E. Mitchell <kyle@kemitchell.com> (https://kemitchell.com)",
   "bin": "./licensor",
   "dependencies": {
-    "apache-2.0": "^1.0.7",
+    "cc-by-4.0": "^1.0.1",
     "glob": "^6.0.4",
-    "gpl-3.0": "^1.0.1",
     "jslicense-0bsd": "^0.1.0",
+    "jslicense-apache-2.0": "^0.1.2",
     "jslicense-bsd-2-clause": "^0.1.0",
     "jslicense-bsd-3-clause": "^0.1.0",
+    "jslicense-gpl-3.0": "^0.1.1",
     "jslicense-isc": "^0.1.0",
     "jslicense-mit": "^0.1.0",
     "jslicense-upl-1.0": "^1.0.2",
     "jslicense-wtfpl": "^0.1.0",
     "nopt": "^3.0.6",
     "normalize-package-data": "^2.1.0",
+    "unlicense": "^1.0.2",
     "word-wrap": "^1.1.0"
   },
   "devDependencies": {
