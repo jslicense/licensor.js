@@ -115,15 +115,12 @@ var licensePath = path.join(cwd, 'LICENSE')
 
 var wrapText = options.width
   ? function (x) {
-    return wrap(
-      x.replace(/\n\n/g, '\n'),
-      {
-        width: options.width,
-        indent: '',
-        trim: true,
-        newline: '\n'
-      }
-    )
+    return wrap(x, {
+      width: options.width,
+      indent: '',
+      trim: true,
+      newline: '\n'
+    })
   }
   : function (x) { return x }
 
