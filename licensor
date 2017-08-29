@@ -16,32 +16,15 @@ limitations under the License.
 */
 var fs = require('fs')
 var path = require('path')
-var nopt = require('nopt')
+var docopt = require('docopt')
 var wrap = require('word-wrap')
 
-var options = nopt(
-  {
-    version: Boolean,
-    width: Number,
-    help: Boolean,
-    notice: Boolean
-  },
-  {
-    v: ['--version'],
-    w: ['--width'],
-    h: ['--help'],
-    n: ['--notice']
-  },
-  process.argv,
-  2
-)
-
-if (options.help) {
-  process.stdout.write([
-    'Generate LICENSE and related files from package.json.',
+var options = docopt.docopt(
+  [
+    'License an npm package.',
     '',
     'Usage:',
-    '  licensor [--wrap=COLUMNS] [--notice]',
+    '  licensor [--width=COLUMNS] [--notice]',
     '  licensor -h | --help',
     '  licensor -v | --version',
     '',
@@ -50,14 +33,12 @@ if (options.help) {
     '  -v, --version                  Show version.',
     '  -w COLUMNS, --width=COLUMNS    Wrap license text.',
     '  -n, --notice                   Write an Apache-2.0 NOTICE file.'
-  ].join('\n') + '\n')
-  process.exit(0)
-}
-
-if (options.version) {
-  process.stdout.write(require('./package.json').version + '\n')
-  process.exit(0)
-}
+  ].join('\n') + '\n',
+  {
+    version: require('./package.json').version,
+    help: true
+  }
+)
 
 var cwd = process.cwd()
 
@@ -116,10 +97,10 @@ if (packagePrefix === false) {
 
 var licensePath = path.join(cwd, 'LICENSE')
 
-var wrapText = options.width
+var wrapText = options['--width']
   ? function (x) {
     return wrap(x, {
-      width: options.width,
+      width: parseInt(options['--width']),
       indent: '',
       trim: true,
       newline: '\n'
@@ -136,7 +117,7 @@ if (license === 'Apache-2.0') {
   var year = fieldFromPackage('year', json)
   var owners = fieldFromPackage('owners', json)
 
-  if (options.notice) {
+  if (options['--notice']) {
     var url = fieldFromPackage('url', json)
     fs.writeFileSync(
       path.join(cwd, 'NOTICE'),

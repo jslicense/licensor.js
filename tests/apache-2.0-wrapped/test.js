@@ -17,7 +17,13 @@ var tap = require('tap')
 var fs = require('fs')
 var path = require('path')
 
-tap.equal(require('../run')(['--wrap 30'], __dirname).status, 0)
+tap.equal(
+  require('../run')(
+    ['--width=30', '--notice'],
+    __dirname
+  ).status,
+  0
+)
 
 tap.equal(
   fs.readFileSync(path.join(__dirname, 'LICENSE')).toString(),
@@ -34,3 +40,6 @@ tap.equal(
   'https://github.com/john/the-package#readme\n' +
   'Copyright (c) ' + new Date().getFullYear() + ' John Doe\n'
 )
+
+fs.unlinkSync(path.join(__dirname, 'NOTICE'))
+fs.unlinkSync(path.join(__dirname, 'LICENSE'))
