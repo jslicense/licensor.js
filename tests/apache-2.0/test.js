@@ -76,6 +76,7 @@ tap.equal(
 fs.writeFileSync(path.join(__dirname, 'index.js'), indexBefore)
 fs.writeFileSync(path.join(__dirname, 'bin.js'), binScriptBefore)
 fs.unlinkSync(path.join(__dirname, 'NOTICE'))
+fs.unlinkSync(path.join(__dirname, 'LICENSE'))
 
 tap.equal(
   readFileSync('has-header.js'),

@@ -63,3 +63,5 @@ tap.equal(text, [
   'OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER ' +
   'DEALINGS IN THE SOFTWARE.'
 ].join('\n\n') + '\n')
+
+fs.unlinkSync(path.join(__dirname, 'LICENSE'))
