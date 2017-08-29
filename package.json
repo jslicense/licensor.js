@@ -6,7 +6,7 @@
   "bin": "./licensor",
   "dependencies": {
     "apache-2.0": "^1.0.7",
-    "glob": "^6.0.4",
+    "glob": "^7.1.2",
     "gpl-3.0": "^1.0.1",
     "jslicense-0bsd": "^0.1.0",
     "jslicense-bsd-2-clause": "^0.1.0",
