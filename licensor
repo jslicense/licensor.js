@@ -95,6 +95,13 @@ if (packagePrefix === false) {
   process.exit(1)
 }
 
+if (options['<SPDX-Identifier>']) {
+  var preserveIndent = require('json-preserve-indent')
+  var revised = preserveIndent(packageData)
+  revised.set('license', license)
+  fs.writeFileSync(packageJSON, revised.format())
+}
+
 var licensePath = path.join(cwd, 'LICENSE')
 
 var wrapText = options['--width']

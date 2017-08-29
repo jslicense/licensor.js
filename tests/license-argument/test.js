@@ -17,6 +17,8 @@ var tap = require('tap')
 var fs = require('fs')
 var path = require('path')
 
+var packageBefore = fs.readFileSync(path.join(__dirname, 'package.json'))
+
 tap.equal(require('../run')(['MIT'], __dirname).status, 0)
 
 var text = fs.readFileSync(path.join(__dirname, 'LICENSE')).toString()
@@ -49,4 +51,10 @@ tap.equal(text, [
   'SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.'
 ].join('\n\n') + '\n')
 
+tap.equal(
+  require(path.join(__dirname, 'package.json')).license,
+  'MIT'
+)
+
+fs.writeFileSync(path.join(__dirname, 'package.json'), packageBefore)
 fs.unlinkSync(path.join(__dirname, 'LICENSE'))
