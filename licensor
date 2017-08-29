@@ -24,7 +24,7 @@ var options = docopt.docopt(
     'License an npm package.',
     '',
     'Usage:',
-    '  licensor [--width=COLUMNS] [--notice]',
+    '  licensor [<SPDX-Identifier>] [--width=COLUMNS] [--notice]',
     '  licensor -h | --help',
     '  licensor -v | --version',
     '',
@@ -75,7 +75,7 @@ var fixedLicenses = [
   'Apache-2.0'
 ]
 
-var license = json.license
+var license = options['<SPDX-Identifier>'] || json.license
 
 if (!license || typeof license !== 'string') {
   process.stderr.write('No license property')
