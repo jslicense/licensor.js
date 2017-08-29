@@ -61,7 +61,7 @@ var cwd = process.cwd()
 var packageJSON = path.join(cwd, 'package.json')
 var packageData
 try {
-  fs.readFileSync(packageJSON)
+  packageData = fs.readFileSync(packageJSON)
 } catch (error) {
   process.stderr.write('Cannot read package.json')
   process.exit(1)
@@ -142,6 +142,7 @@ if (license === 'Apache-2.0') {
   )
 
   var licenseURL = 'http://www.apache.org/licenses/LICENSE-2.0'
+  /* eslint-disable max-len */
   var header = [
     '/*',
     'Copyright ' + year + ' ' + owners,
@@ -158,7 +159,8 @@ if (license === 'Apache-2.0') {
     'See the License for the specific language governing permissions and',
     'limitations under the License.',
     '*/'
-  ].join('\n')
+  ]
+  /* eslint-enable max-len */
 
   var probablyHasHeader = function (fileContent) {
     return (
@@ -167,12 +169,28 @@ if (license === 'Apache-2.0') {
     )
   }
 
+  var startsWithShebang = function (fileContent) {
+    return fileContent.indexOf('#!') === 0
+  }
+
   require('glob')
     .sync('**/*.js', {ignore: 'node_modules/**/*'})
     .forEach(function (jsFile) {
       var content = fs.readFileSync(jsFile).toString()
       if (!probablyHasHeader(content)) {
-        fs.writeFileSync(jsFile, header + '\n\n' + content)
+        var lineEnding = content.indexOf('\r\n') === -1 ? '\n' : '\r\n'
+        var newContent
+        if (startsWithShebang(content)) {
+          var lines = content.split(/\r?\n/)
+          newContent = []
+            .concat(lines[0])
+            .concat(header)
+            .concat(lines.slice(1))
+            .join(lineEnding)
+        } else {
+          newContent = header.join(lineEnding) + lineEnding + content
+        }
+        fs.writeFileSync(jsFile, newContent)
       }
     })
 }

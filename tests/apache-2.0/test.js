@@ -19,6 +19,7 @@ var path = require('path')
 
 var indexBefore = readFileSync('index.js')
 var alreadyHasBefore = readFileSync('has-header.js')
+var binScriptBefore = readFileSync('bin.js')
 
 tap.equal(require('../run')([], __dirname).status, 0)
 
@@ -40,8 +41,7 @@ tap.equal(
   )
 )
 
-var text = readFileSync('index.js')
-tap.equal(text, [
+var header = [
   '/*',
   'Copyright ' + year + ' John Doe',
   '',
@@ -57,9 +57,24 @@ tap.equal(text, [
   'See the License for the specific language governing permissions and',
   'limitations under the License.',
   '*/'
-].join('\n') + '\n\n' + indexBefore)
+]
+
+var text = readFileSync('index.js')
+tap.equal(text, header.join('\n') + '\n' + indexBefore)
+
+var binScript = readFileSync('bin.js')
+var split = binScriptBefore.split('\n')
+tap.equal(
+  binScript,
+  []
+    .concat(split[0])
+    .concat(header)
+    .concat(split.slice(1))
+    .join('\n')
+)
 
 fs.writeFileSync(path.join(__dirname, 'index.js'), indexBefore)
+fs.writeFileSync(path.join(__dirname, 'bin.js'), binScriptBefore)
 
 tap.equal(
   readFileSync('has-header.js'),
