@@ -15,7 +15,7 @@
     "jslicense-mit": "^0.1.0",
     "jslicense-upl-1.0": "^1.0.2",
     "jslicense-wtfpl": "^0.1.0",
-    "nopt": "^3.0.6",
+    "nopt": "^4.0.1",
     "normalize-package-data": "^2.4.0",
     "word-wrap": "^1.1.0"
   },
