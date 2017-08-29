@@ -21,7 +21,7 @@ var indexBefore = readFileSync('index.js')
 var alreadyHasBefore = readFileSync('has-header.js')
 var binScriptBefore = readFileSync('bin.js')
 
-tap.equal(require('../run')([], __dirname).status, 0)
+tap.equal(require('../run')(['--notice'], __dirname).status, 0)
 
 tap.equal(
   readFileSync('LICENSE'),
@@ -75,6 +75,7 @@ tap.equal(
 
 fs.writeFileSync(path.join(__dirname, 'index.js'), indexBefore)
 fs.writeFileSync(path.join(__dirname, 'bin.js'), binScriptBefore)
+fs.unlinkSync(path.join(__dirname, 'NOTICE'))
 
 tap.equal(
   readFileSync('has-header.js'),

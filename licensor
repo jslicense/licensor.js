@@ -23,12 +23,14 @@ var options = nopt(
   {
     version: Boolean,
     width: Number,
-    help: Boolean
+    help: Boolean,
+    notice: Boolean
   },
   {
     v: ['--version'],
     w: ['--width'],
-    h: ['--help']
+    h: ['--help'],
+    n: ['--notice']
   },
   process.argv,
   2
@@ -39,14 +41,15 @@ if (options.help) {
     'Generate LICENSE and related files from package.json.',
     '',
     'Usage:',
-    '  licensor [--wrap=COLUMNS]',
+    '  licensor [--wrap=COLUMNS] [--notice]',
     '  licensor -h | --help',
     '  licensor -v | --version',
     '',
     'Options:',
     '  -h, --help                     Show this screen.',
     '  -v, --version                  Show version.',
-    '  -w COLUMNS, --width=COLUMNS    Wrap license text.'
+    '  -w COLUMNS, --width=COLUMNS    Wrap license text.',
+    '  -n, --notice                   Write an Apache-2.0 NOTICE file.'
   ].join('\n') + '\n')
   process.exit(0)
 }
@@ -133,13 +136,15 @@ if (license === 'Apache-2.0') {
   var year = fieldFromPackage('year', json)
   var owners = fieldFromPackage('owners', json)
 
-  var url = fieldFromPackage('url', json)
-  fs.writeFileSync(
-    path.join(cwd, 'NOTICE'),
-    fieldFromPackage('name', json) + '\n' +
-    (url ? url + '\n' : '') +
-    'Copyright (c) ' + year + ' ' + owners + '\n'
-  )
+  if (options.notice) {
+    var url = fieldFromPackage('url', json)
+    fs.writeFileSync(
+      path.join(cwd, 'NOTICE'),
+      fieldFromPackage('name', json) + '\n' +
+      (url ? url + '\n' : '') +
+      'Copyright (c) ' + year + ' ' + owners + '\n'
+    )
+  }
 
   var header = []
     .concat('/*')
