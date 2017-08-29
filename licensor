@@ -59,14 +59,13 @@ if (options.version) {
 var cwd = process.cwd()
 
 var packageJSON = path.join(cwd, 'package.json')
+var packageData
 try {
-  fs.accessSync(packageJSON, fs.R_OK)
+  fs.readFileSync(packageJSON)
 } catch (error) {
   process.stderr.write('Cannot read package.json')
   process.exit(1)
 }
-
-var packageData = fs.readFileSync(packageJSON)
 
 var json
 try {
