@@ -7,6 +7,7 @@
   "dependencies": {
     "apache-2.0": "^1.0.7",
     "apache-2.0-header": "^1.0.1",
+    "blueoak-1.0.0": "^1.0.0",
     "docopt": "^0.6.2",
     "glob": "^7.1.2",
     "gpl-3.0": "^1.0.1",

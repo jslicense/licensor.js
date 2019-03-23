@@ -72,7 +72,8 @@ var patternLicenses = [
 ]
 
 var fixedLicenses = [
-  'Apache-2.0'
+  'Apache-2.0',
+  'BlueOak-1.0.0'
 ]
 
 var license = options['<SPDX-Identifier>'] || json.license
