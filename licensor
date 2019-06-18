@@ -160,7 +160,7 @@ if (license === 'Apache-2.0') {
   }
 
   require('glob')
-    .sync('**/*.js', {ignore: 'node_modules/**/*'})
+    .sync('**/*.{js,mjs}', {ignore: 'node_modules/**/*'})
     .forEach(function (jsFile) {
       var content = fs.readFileSync(jsFile).toString()
       if (!probablyHasHeader(content)) {
