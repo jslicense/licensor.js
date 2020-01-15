@@ -1,6 +1,9 @@
 tests/**/LICENSE
 tests/**/NOTICE
 
+# Test Suite Output Directory
+/.nyc_output/
+
 # Node Modules Directory
 /node_modules/
 
