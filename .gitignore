@@ -1,2 +1,9 @@
 tests/**/LICENSE
 tests/**/NOTICE
+
+# Node Modules Directory
+/node_modules/
+
+# IDE Directories
+/.idea/
+
